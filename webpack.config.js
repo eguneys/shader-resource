@@ -1,46 +1,40 @@
-var path = require('path');
-var webpack = require('webpack');
-var DashboardPlugin = require('webpack-dashboard/plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const pkg = require('./package.json');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  devtool: 'eval',
-  entry: './src/index.js',
-  resolve: {
-    modulesDirectories: ['src', 'node_modules'],
-    extensions: ['', '.js']
+  entry: ['babel-polyfill','./src/index.js'],
+  devServer: {
+    hot: true,
+    inline: true,
+    host: '0.0.0.0',
+    disableHostCheck: true
   },
+  target: 'web',
+  devtool: 'source-map',
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        test: /\.js?$/,
+        use: 'babel-loader',
+        exclude: path.resolve(__dirname, './node_modules/')
+      },{
+        test: /\.(jpe?g|png|gif|svg|json)$/i,
+        use: 'file-loader'
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-        exclude: /node_modules/
+        test: /\.css?$/,
+        use: ['style-loader', 'css-loader'],
+        exclude: path.resolve(__dirname, './node_modules/')
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      inject: 'body',
       template: 'src/index.html'
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new DashboardPlugin()
-  ],
-  devServer: {
-    hot: true,
-    quiet: true,
-    inline: true,
-    stats: false,
-    watchOptions: { poll: 1000, ignored: /node_modules/ }
-  }
-};
+    new webpack.HotModuleReplacementPlugin({})
+  ]
+}

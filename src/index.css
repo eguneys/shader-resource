@@ -1,1 +1,106 @@
 @import "../node_modules/normalize.css/normalize.css";
+
+// sky #caebf2
+// carbon #a9a9a9
+// watermelon #ff3b3f
+// neutral #efefef
+
+// blue 3 #247ba0
+// blue 2 #70c1b3
+// blue 1 #b2dbbf
+// blue 0 #f3ffbd
+// pink #ff1654
+
+body {
+}
+
+body {
+  background: #efefef;
+}
+
+h1 {
+  text-align: center;
+}
+
+
+.sc_wrap {
+  background: #efefef;
+}
+
+.starcity {
+  position: relative;
+  margin: auto;
+  height: 600px;
+  width: 800px;
+  background: #caebf2;
+}
+
+.starcity_hud .roll {
+  position: absolute;
+  height: 10em;
+  width: 10em;
+  background: #ff3b3f;
+  left: calc(50% - 5em);
+  top: calc(50% - 5em);
+}
+
+.starcity .starcity_hud_below {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.starcity_hud_below .buy_hotels {
+  background: #ff3b3f;
+  width: 45em;
+  height: 15em;
+  position: absolute;
+
+  left: calc(50% - 22.5em);
+  bottom: 0;
+}
+
+.starcity_hud_below .trade {
+  background: #247ba0;
+
+  width: 40em;
+  height: 28em;
+  position: absolute;
+
+  left: calc(50% - 20em);
+  top: calc(50% - 14em);
+}
+
+.buy_hotels ul {
+  list-style: none;
+  
+}
+
+.buy_hotels ul > li {
+  display: inline-block;
+  width: 10em;
+  height: 10em;
+}
+
+.starcity .starcity_hud {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.starcity_hud .player {
+  position: absolute;
+  width: 20em;
+  height: 10em;
+  background: #ff1654;
+}
+
+.player.playerone {
+  left: 0;
+  top: 0;
+}
+
+.player.playertwo {
+  right: 0;
+  bottom: 0;
+}
