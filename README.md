@@ -12,7 +12,20 @@
 * Scene()
 
 * ShaderMaterial()
-  
+
+## Webpack API
+
+* Hot module Reload
+```
+if (module.hot) {
+  module.hot.accept('./objects', () => {
+    state.objects = require('./objects').initObjects();
+    state.scene = renderWrap(state);
+    state.redrawNow();
+  });
+}
+```
+
 
 ### Dev Work
- - [ ] Hot module reload support
+ - [x] Hot module reload support

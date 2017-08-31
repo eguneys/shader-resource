@@ -1,5 +1,3 @@
-import './index.css';
-
 import { Scene,
          PerspectiveCamera,
          WebGLRenderer } from 'three';
@@ -8,10 +6,7 @@ import { translate, pos } from './util';
 
 import { initObjects } from './objects';
 
-function renderWrap() {
-
-  const scene = new Scene();
-
+function initContext() {
   
   const fov = 60,
         aspect = 1,
@@ -20,42 +15,58 @@ function renderWrap() {
   const camera = 
         new PerspectiveCamera(fov, aspect, near, far);
 
+  translate(camera, pos(0, 0, 500));
+
   const renderer = new WebGLRenderer({});
   renderer.setSize(800, 600);
 
-  const objects = initObjects();
+  return {
+    camera,
+    renderer
+  };
+}
 
-  translate(camera, pos(0, 0, 500));
+function renderWrap(state) {
+  const objects = state.objects;
+
+  const scene = new Scene();
 
   scene.add(objects.lights.ambient);
   scene.add(objects.meshes.plane);
   scene.add(objects.meshes.plane2);
 
-  const renderFn = () => {
-    renderer.render(scene, camera);
-  };
-
-  return {
-    scene,
-    camera,
-    renderer,
-    renderFn
-  };
+  return scene;
 }
 
+let state;
+
 export function app(element, config) {
-  const context = renderWrap(element);
+  state = {
+    objects: initObjects(),
+    context: initContext()
+  };
+  
+  state.scene = renderWrap(state);
 
   function redrawAll() {
     const redrawNow = () => {
-      context.renderFn();
+      const context = state.context;
+      context.renderer.render(state.scene, context.camera);
     };
+
+    state.redrawNow = redrawNow;
 
     redrawNow();
   }
   redrawAll();
 
-  element.appendChild(context.renderer.domElement);
+  element.appendChild(state.context.renderer.domElement);
 }
 
-app(document.getElementById('elCanvas'), {});
+if (module.hot) {
+  module.hot.accept('./objects', () => {
+    state.objects = require('./objects').initObjects();
+    state.scene = renderWrap(state);
+    state.redrawNow();
+  });
+}

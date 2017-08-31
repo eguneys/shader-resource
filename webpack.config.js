@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const DEBUG = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-  entry: ['babel-polyfill','./src/index.js'],
+  entry: ['babel-polyfill','./src/boot.js'],
   devServer: {
     hot: true,
     inline: true,
