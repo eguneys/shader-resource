@@ -1,11 +1,18 @@
 # webpack-minimal
 
-Minimalistic Webpack setup with Babel.
+## Three.js API
 
-## Getting started
+* PerspectiveCamera(fov, aspect, near, far)
+  .position.set()
 
-- Install [NPM](https://www.npmjs.com/) and [Yarn](https://yarnpkg.com)
-- Clone this project
-- Run `yarn` to install dependencies
-- Run `npm start` to start up the development server
-- Application is now available at `localhost:5000`
+* WebGLRenderer({canvas, alpha, antialias})
+  .setSize(w, h);
+  .render(scene, camera)
+
+* Scene()
+
+* ShaderMaterial()
+  
+
+### Dev Work
+ - [ ] Hot module reload support

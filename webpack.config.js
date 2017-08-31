@@ -25,6 +25,10 @@ module.exports = {
         use: 'file-loader'
       },
       {
+        test: /\.(frag?g|vert)$/i,
+        use: 'raw-loader'
+      },
+      {
         test: /\.css?$/,
         use: ['style-loader', 'css-loader'],
         exclude: path.resolve(__dirname, './node_modules/')
