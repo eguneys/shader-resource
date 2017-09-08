@@ -8,3 +8,5 @@ export function pos(x, y, z) {
     x, y, z
   };
 }
+
+export const raf = requestAnimationFrame;

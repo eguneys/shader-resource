@@ -1,5 +1,10 @@
 # webpack-minimal
 
+## Shader
+
+* gl_FragCoord is screen coordinates
+
+
 ## Three.js API
 
 * PerspectiveCamera(fov, aspect, near, far)
@@ -26,6 +31,11 @@ if (module.hot) {
 }
 ```
 
+## Babel ES6
 
-### Dev Work
+* spread syntax {...state, props } [redux example](http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html)
+
+
+## Dev Work
  - [x] Hot module reload support
+
