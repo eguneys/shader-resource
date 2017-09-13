@@ -1,6 +1,7 @@
 import { Scene,
          PerspectiveCamera,
-         WebGLRenderer } from 'three';
+         WebGLRenderer
+       } from 'three';
 
 import { raf, translate, pos } from './util';
 
@@ -20,19 +21,41 @@ function initContext() {
   const renderer = new WebGLRenderer({});
   renderer.setSize(800, 600);
 
+  // console.log(OutlineEffect);
+
+  // const outlineEffect = new OutlineEffect(renderer, {
+  // });
+
+  
+  const render = (scene) => {
+    renderer.render(scene, camera);
+    // outlineEffect.render(renderer, camera);
+  };
+
   return {
     camera,
-    renderer
+    renderer,
+    render
   };
 }
 
 function renderWrap(objects) {
   const scene = new Scene();
 
-  scene.add(objects.lights.ambient);
-  scene.add(objects.meshes.plane);
-  scene.add(objects.meshes.plane2);
-  scene.add(objects.meshes.plane3);
+  // scene.add(objects.lights.ambient);
+  scene.add(objects.lights.key);
+  scene.add(objects.lights.fill);
+  scene.add(objects.lights.back);
+
+  // scene.add(objects.meshes.plane);
+  // scene.add(objects.meshes.plane2);
+  // scene.add(objects.meshes.plane3);
+  // scene.add(objects.meshes.plane4);
+  // scene.add(objects.meshes.plane5);
+  scene.add(objects.meshes.planeDark);
+  scene.add(objects.meshes.box1);
+  scene.add(objects.meshes.boxgroup);
+  scene.add(objects.meshes.mixgroup);
 
   return scene;
 }
@@ -49,8 +72,7 @@ export function app(element, config) {
 
   function redrawAll() {
     const redrawNow = () => {
-      const context = state.context;
-      context.renderer.render(state.scene, context.camera);
+      state.context.render(state.scene);
     };
 
     state.objects = objects;

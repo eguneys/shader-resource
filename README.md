@@ -1,9 +1,24 @@
 # webpack-minimal
 
+## Gamedev
+
+* [model resource](https://www.models-resource.com/)
+
 ## Shader
 
 * gl_FragCoord is screen coordinates
 
+* Tutorials
+  - [tornado](http://www.inear.se/2011/09/set-a-sphere-on-fire-with-three-js/)
+  
+  - [cube slam 9 slice](http://www.inear.se/2013/07/cube-slam-behind-the-three-scene/)
+
+
+## Scene Setup
+
+    * Lighting
+      - [3 point lighting](https://courses.cs.washington.edu/courses/cse458/05au/reading/lighting_tutorial/)
+      - [3 point source three.x](https://github.com/jeromeetienne/threex.basiclighting/blob/master/threex.basiclighting.js)
 
 ## Three.js API
 
@@ -17,6 +32,10 @@
 * Scene()
 
 * ShaderMaterial()
+
+### Three.js Custom
+
+    * [RoundedBoxGeometry](https://github.com/pailhead/three-rounded-box/blob/master/index.js
 
 ## Webpack API
 

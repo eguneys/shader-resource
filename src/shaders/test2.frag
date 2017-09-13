@@ -39,7 +39,8 @@ void main() {
   //y = 1.0 - pow(abs(x - 0.5), 1.0);
   //y = 1.0 - pow(abs(x - 0.5) * 2.0, 0.5);
   // y = 1.0 - pow(abs(x - 0.5) * 2.0, 1.0);
-  y = 1.0 - pow(abs(x - 0.5) * 2.0, mod(time * 0.3, 3.0));
+  //y = 1.0 - pow(abs(x - 0.5) * 2.0, mod(time * 0.3, 3.0));
+  y = x;
 
   vec3 color = vec3(y);
 
