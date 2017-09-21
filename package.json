@@ -19,7 +19,7 @@
   "homepage": "https://github.com/crisu83/webpack-minimal#readme",
   "dependencies": {
     "normalize.css": "^5.0.0",
-    "three": "^0.87.1"
+    "three": "https://api.github.com/repos/mrdoob/three.js/tarball/dev"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",

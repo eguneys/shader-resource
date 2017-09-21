@@ -7,6 +7,8 @@ import { raf, translate, pos } from './util';
 
 import { initObjects } from './objects';
 
+import { initAssets } from './assets';
+
 function initContext() {
   
   const fov = 60,
@@ -18,7 +20,7 @@ function initContext() {
 
   translate(camera, pos(0, 0, 500));
 
-  const renderer = new WebGLRenderer({});
+  const renderer = new WebGLRenderer({ alpha: true });
   renderer.setSize(800, 600);
 
   // console.log(OutlineEffect);
@@ -56,6 +58,9 @@ function renderWrap(objects) {
   scene.add(objects.meshes.box1);
   scene.add(objects.meshes.boxgroup);
   scene.add(objects.meshes.mixgroup);
+  scene.add(objects.meshes.wings);
+  scene.add(objects.meshes.smoke);
+  scene.add(objects.meshes.chan);
 
   return scene;
 }
@@ -67,27 +72,31 @@ export function app(element, config) {
     context: initContext()
   };
 
-  const objects = initObjects(state),
-        scene  = renderWrap(objects);
+  initAssets(state).then(initApp);
 
-  function redrawAll() {
-    const redrawNow = () => {
-      state.context.render(state.scene);
-    };
+  function initApp() {
+    const objects = initObjects(state),
+          scene  = renderWrap(objects);
 
-    state.objects = objects;
-    state.scene = scene;
-    state.redrawNow = redrawNow;
+    function redrawAll() {
+      const redrawNow = () => {
+        state.context.render(state.scene);
+      };
 
-    redrawNow();
+      state.objects = objects;
+      state.scene = scene;
+      state.redrawNow = redrawNow;
+
+      redrawNow();
+    }
+    redrawAll();
+
+    anim(state => update(state), state);
+
+    bindEvents(element, state);
+
+    element.appendChild(state.context.renderer.domElement);
   }
-  redrawAll();
-
-  anim(state => update(state), state);
-
-  bindEvents(element, state);
-
-  element.appendChild(state.context.renderer.domElement);
 }
 
 function bindEvents(element, state) {
