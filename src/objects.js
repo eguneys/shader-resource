@@ -11,6 +11,7 @@ import { Group,
          DirectionalLight,
          SpotLight,
          UniformsLib,
+         AdditiveBlending,
          Color,
          Vector2,
          Vector3,
@@ -196,7 +197,8 @@ export function initObjects(state) {
       map: state.textures.t1,
       alphaMap: state.textures.a1,
       transparent: true,
-      depthTest: false
+      depthTest: false,
+      blending: AdditiveBlending      
     }),
     wingCShader: new ShaderMaterial({
       uniforms: wingUniforms,
@@ -225,7 +227,8 @@ export function initObjects(state) {
       },
       vertexShader: chanVertShader,
       fragmentShader: chanFragShader,
-      transparent: true      
+      transparent: true,
+      blending: AdditiveBlending
     }),
     shapes: new ShaderMaterial({
       uniforms: uniforms,

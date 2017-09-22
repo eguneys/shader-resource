@@ -1,6 +1,7 @@
 import { Texture,
          TextureLoader,
          RepeatWrapping,
+         ClampToEdgeWrapping,
          DefaultLoadingManager
        } from 'three';
 
@@ -41,6 +42,7 @@ export function initAssets(state) {
     textures.a1 = a1;
 
     textures.waveAlpha = waveGrad();
+    textures.waveAlpha.wrapS = ClampToEdgeWrapping;
 
     textures.smoke = smokeGrad();
 
@@ -122,7 +124,6 @@ function makeTexture(f) {
   document.body.append(canvas);
 
   texture.wrapS = RepeatWrapping;
-
   texture.needsUpdate = true;
 
   return texture;

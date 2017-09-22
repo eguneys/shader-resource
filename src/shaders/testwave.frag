@@ -26,13 +26,17 @@ void main() {
 
   vec4 diffuseColor = vec4(diffuse, opacity);
 
+  vec4 alphaColor = texture2D(amap, ovUv);
+
+  vec4 alpha2Color = texture2D(a2map, ovUv2);
+
   // #include <map_fragment>
   vec4 texelColor = texture2D(map, ovUv);
   // texelColor = mapTexelToLinear(texelColor);
-  diffuseColor *= texelColor;
-  diffuseColor.a = texture2D(amap, ovUv).r;
-  diffuseColor.a *= texture2D(a2map, ovUv2).g;
-
+  diffuseColor = texelColor;
+  diffuseColor.a = alphaColor.r + alphaColor.g + alphaColor.b;
+  diffuseColor.a *= alpha2Color.g;
+  // diffuseColor = alpha2Color;
 
   // vec2 offset = vec2(time * 0.5, 0.0);
 

@@ -2,8 +2,15 @@
 
 ## Research
 
+    - current
+      * alpha mask vfx [similar](https://realtimevfx.com/t/how-do-you-think-this-fx-is-created/892)
+        - ocean [wind maker analysis](https://medium.com/@gordonnl/fire-and-haze-b4561743b17)
+      * [book of shaders](https://thebookofshaders.com/13/)
+      * [perlin noise](http://webstaff.itn.liu.se/~stegu/jgt2012/article.pdf)
 
   ### Game tricks
+
+    * uv distortion
 
     * decals
     * soft particles
@@ -13,14 +20,16 @@
 
   ### Audio vis
 
-    * node based vis editor like [nin simplified](https://github.com/ninjadev/nin/tree/master/nin). [example](https://github.com/ninjadev/re/blob/master/src/jules.js)
+* node based vis editor like [nin simplified](https://github.com/ninjadev/nin/tree/master/nin). [example](https://github.com/ninjadev/re/blob/master/src/jules.js)
       - seek frames
 
   ### Threejs
 
-    * setuvtransform rotate matrix around object origin (set centerX 0.5);
+    * setuvtransform rotate matrix around object origin
+      - (set centerX 0.5);
 
     * texture wrapS affects how
+      - https://github.com/mrdoob/three.js/src/renderers/webgl/WebGLTextures.js#L352
 
     * UV mapping with shader material
        - three.texture params (offset, repeat)
@@ -29,7 +38,8 @@
 
     * (depthwrite, depthtest) properties on material
       - [so](https://stackoverflow.com/questions/37647853/three-js-depthwrite-vs-depthtest-for-transparent-canvas-texture-map-on-three-p)
-    * pointsmaterial
+
+    * PointsMaterial
       - points material is used with points object.
       - points object sets drawmode to glPoints, and a point is rendered on each vertex.
       - [example](https://github.com/mrdoob/three.js/blob/master/examples/webgl_points_billboards.html)
@@ -63,7 +73,8 @@
 
 ## Shader
 
-    * gl_FragCoord is screen coordinates
+
+    * Custom VFX Shader
 
 * node based shaders
       - [ ]
@@ -155,19 +166,23 @@
     * [flip code gamedev](http://www.flipcode.com/archives/)
 
 ## game tech
+    * [perlin noise paper](http://webstaff.itn.liu.se/~stegu/jgt2012/article.pdf)
+    * [soft shadows](http://codeflow.org/entries/2013/feb/15/soft-shadow-mapping/)
     * [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
       [decal threejs](https://github.com/spite/THREE.DecalGeometry)
 
     * [Soft particles](http://blog.wolfire.com/2010/04/Soft-Particles)
     * [wolfire blog](http://blog.wolfire.com/tag/game-tech/6`)
 
-## Game Analysis
+## Making Of / Game Analysis
+    * [map box wind particles](https://blog.mapbox.com/how-i-built-a-wind-map-with-webgl-b63022b5537f)
+      - [code](https://github.com/mapbox/webgl-wind)
+    * [ghost recon](https://m.makemepulse.com/a-world-with-no-heroes-79cfafbc7c7)
     * [proun, awesomenauts game maker blog](http://joostdevblog.blogspot.com.tr/search/label/graphics)
        - [proun articles](http://joostdevblog.blogspot.com.tr/search?q=proun)
     * [wind maker](http://polycount.com/discussion/104415/zelda-wind-waker-tech-and-texture-analysis-picture-heavy)
 
 ## Tutorials
-
     * [nehe tuts in three3j](http://www.johannes-raida.de/tutorials/three.js/tutorial08/tutorial08.htm)
 
     * [2017 links](http://kesen.realtimerendering.com/)
@@ -215,6 +230,13 @@
     * Lighting
       - [3 point lighting](https://courses.cs.washington.edu/courses/cse458/05au/reading/lighting_tutorial/)
       - [3 point source three.x](https://github.com/jeromeetienne/threex.basiclighting/blob/master/threex.basiclighting.js)
+
+### Demoscene VFX
+
+    * [realtime VFX](https://realtimevfx.com/t/beginning-vfx-artist-advice-for-beginners-from-a-beginner/3081/2)
+    * [learn demoscene] https://github.com/psenough/teach_yourself_demoscene_in_14_days
+    * [pouet](pouet.net/prod.php?which=61584)
+    
 
 ### Misc gamedev
 
