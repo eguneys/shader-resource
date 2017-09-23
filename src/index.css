@@ -1,0 +1,37 @@
+@import "../node_modules/normalize.css/normalize.css";
+
+// sky #caebf2
+// carbon #a9a9a9
+// watermelon #ff3b3f
+// neutral #efefef
+
+// blue 3 #247ba0
+// blue 2 #70c1b3
+// blue 1 #b2dbbf
+// blue 0 #f3ffbd
+// pink #ff1654
+
+/*  */
+
+body {}
+
+body {
+  background: #efefef;
+}
+
+h1 {
+  text-align: center;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+}
+
+.canvas {
+  border: 0.5em solid #efefef;
+  border-radius: 1em;
+  height: 600px;
+  width: 800px;
+  background: #caebf2;
+}

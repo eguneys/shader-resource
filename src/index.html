@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>webpack-minimal</title>
+    <style>
+     .hang {
+         position: fixed;
+         opacity: 0.5;
+     }
+
+     .halve {
+         height: 80%;
+         width: 80%;
+     }
+
+     #elTextures {
+         background: #b2dbbf;
+         display: flex;
+         flex-flow: row wrap;
+         width: 80%;
+         justify-content: center;
+     }
+
+     #elTextures > canvas {
+         width: fit-content;
+         height: fit-content;
+         margin: 0.1em;
+     }
+
+    </style>
+</head>
+<body>
+<h1>Three.js Welcome!</h1>
+
+<section>
+  <!-- <img class="hang halve" src="/images/kynd.png"> -->
+  <div id="elCanvas" class="canvas"></div>
+</section>
+
+<section>
+  <div id="elTextures" class="textures"></div>
+</section>
+
+<script>
+ (function(){var script=document.createElement('script');script.onload=function(){var stats=new Stats();document.body.appendChild(stats.dom);requestAnimationFrame(function loop(){stats.update();requestAnimationFrame(loop)});};script.src='//rawgit.com/mrdoob/stats.js/master/build/stats.min.js';document.head.appendChild(script);})();
+</script>
+</body>
+</html>
