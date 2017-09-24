@@ -25,7 +25,8 @@ function loadTextures(textures) {
     'noise_boldv': '/noise/T_Random_66.png',
     'noise_uwater': '/noise/T_Random_48.png',
     'noise_dwarp': '/noise/T_Random_46.png',
-    'noise_bbrick': '/noise/T_Random_04.png'
+    'noise_bbrick': '/noise/T_Random_04.png',
+    'noise_perlin': '/noise/perlin_noise.png'
   };
 
   let path;
@@ -86,12 +87,18 @@ const smokeGrad = () => makeTexture((ctx, w, h) => {
   radialGrad(ctx, w*0.3, h*0.6, w, h);
 });
 
-const circleGrad = () => makeTexture((ctx, w, h) => {
-  radialGrad(ctx, w*0.5, h*0.5, w, h);
-}, 128, 128);
+const circleGrad = () => {
+  const t = makeTexture((ctx, w, h) => {
+    radialGrad(ctx, w*0.5, h*0.5, w, h);
+  }, 128, 128);
+
+  t.wrapS = t.wrapT = RepeatWrapping;
+
+  return t;
+};
 
 const radialGrad = (ctx, x, y, w, h) => {
-  const gradient = ctx.createRadialGradient(x, y, w*0.3, x, y, w*0.5);
+  const gradient = ctx.createRadialGradient(x, y, w*0.001, x, y, w*0.5);
   gradient.addColorStop(0, '#ffffff');
   // gradient.addColorStop(0.5, '#ff0000');
   gradient.addColorStop(1, '#000000');

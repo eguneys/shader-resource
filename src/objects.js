@@ -11,6 +11,7 @@ import { Group,
          DirectionalLight,
          SpotLight,
          UniformsLib,
+         DoubleSide,
          NormalBlending,
          AlphaBlending,
          AdditiveBlending,
@@ -38,6 +39,9 @@ import chanVertShader from './shaders/chan.vert';
 import chanFragShader from './shaders/chan.frag';
 import vfxVertShader from './shaders/vfx.vert';
 import vfxFragShader from './shaders/vfx.frag';
+
+import vfxVertShader2 from './shaders/vfx2.vert';
+import vfxFragShader2 from './shaders/vfx.frag';
 
 function wings(geo, mat) {
   const r1 = degToRad(-30);
@@ -97,8 +101,8 @@ function basicMaterial(params) {
   return new MeshBasicMaterial(params);
 }
 
-function sPlane(w) {
-  return new PlaneGeometry(w, w);
+function sPlane(w, divs = 2) {
+  return new PlaneGeometry(w, w, divs, divs);
 }
 
 function makeMesh(geo, mat) {
@@ -121,6 +125,21 @@ function outlinemesh(mesh) {
 }
 
 export function initObjects(state) {
+
+  const keyToFillRatio = 0.2,  // 5 / 1
+        keyBrightness = 0.5,
+        fillBrightness = keyBrightness * keyToFillRatio;
+
+  const lights = {
+    ambient: new AmbientLight(0x222222),
+    //ambient: new AmbientLight(0x101010, .5),
+    dir: new DirectionalLight(0xff8804, 1),
+    // key: new SpotLight(0xffffff, 0.5),
+    key: new DirectionalLight(0xffffff, keyBrightness),
+    fill: new DirectionalLight(0xffffff, fillBrightness),
+    back: new DirectionalLight(0xffffff, 0.3)
+  };
+
   const uniforms = {
     time: { value: 0.0 },
     mouse: { value: new Vector2() },
@@ -144,6 +163,7 @@ export function initObjects(state) {
     plane2: new PlaneGeometry(800, 600),
     plane3: new PlaneGeometry(100, 100, divs, divs),
     splane: sPlane(100),
+    splane10: sPlane(100, 50),
     box1: new BoxGeometry(100, 100, 100)
   };
 
@@ -173,7 +193,6 @@ export function initObjects(state) {
   }
 
 
-
   // geos.plane3.vertices[0].y -= 30;
   // geos.plane3.vertices[2].y += 50;
 
@@ -188,6 +207,18 @@ export function initObjects(state) {
     amap: { type: 't', value: state.textures.white },
     a2map: { type: 't', value: state.textures.white },
     dmap: { type: 't', value: state.textures.noise_flame }
+  };
+
+
+  const vfxUniforms2 = {
+    ...uniforms,
+    uvTransform: { value: new Matrix3() },
+    auvTransform: { value: new Matrix3() },
+    duvTransform: { value: new Matrix3() },
+    map: { value: state.textures.circular },
+    amap: { type: 't', value: state.textures.white },
+    a2map: { type: 't', value: state.textures.white },
+    dmap: { type: 't', value: state.textures.circular }
   };
 
   const mats = {
@@ -253,6 +284,13 @@ export function initObjects(state) {
       fragmentShader: vfxFragShader,
       transparent: true
     }),
+    vfxShader2: new ShaderMaterial({
+      uniforms: vfxUniforms2,
+      vertexShader: vfxVertShader2,
+      fragmentShader: vfxFragShader2,
+      transparent: true,
+      side: DoubleSide
+    }),
     shapes: new ShaderMaterial({
       uniforms: uniforms,
       fragmentShader: shapesFragShader
@@ -274,34 +312,36 @@ export function initObjects(state) {
   ];
 
   const meshes = {
-    plane: new Mesh(geos.plane, mats.wPhong),
-    plane2: new Mesh(geos.plane2, mats.shader1),
-    plane3: new Mesh(geos.plane2, mats.shader3),
-    plane4: new Mesh(geos.plane2, mats.shader4),
-    plane5: new Mesh(geos.plane2, mats.shapes),
-    planeDark: new Mesh(geos.plane2, mats.wPhong),
-    box1: new Mesh(geos.box1, mats.shader3),
+    plane: makeMesh(geos.plane, mats.wPhong),
+    plane2: makeMesh(geos.plane2, mats.shader1),
+    plane3: makeMesh(geos.plane2, mats.shader3),
+    plane4: makeMesh(geos.plane2, mats.shader4),
+    plane5: makeMesh(geos.plane2, mats.shapes),
+    planeDark: makeMesh(geos.plane2, mats.wPhong),
+    box1: makeMesh(geos.box1, mats.shader3),
     boxgroup: boxgroup(allMats, 80),
     mixgroup: mixgroup(allMats, 50),
     wings: wings(geos.plane3, mats.wingCShader),
     smoke: makeMesh(geos.splane, mats.thresholdShader),
     chan: makeMesh(geos.splane, mats.chanShader),
-    vfx: makeMesh(geos.splane, mats.vfxShader)
+    vfx: makeMesh(geos.splane, mats.vfxShader),
+    vfx2: makeMesh(geos.splane10, mats.vfxShader2)
   };
 
-  const keyToFillRatio = 0.2,  // 5 / 1
-        keyBrightness = 0.5,
-        fillBrightness = keyBrightness * keyToFillRatio;
+  let addMeshes = [
+    meshes.planeDark,
+    meshes.box1,
+    meshes.boxgroup,
+    meshes.mixgroup,
+    meshes.wings,
+    meshes.smoke,
+    meshes.chan,
+    meshes.vfx,
+  ];
 
-  const lights = {
-    ambient: new AmbientLight(0x222222),
-    //ambient: new AmbientLight(0x101010, .5),
-    dir: new DirectionalLight(0xff8804, 1),
-    // key: new SpotLight(0xffffff, 0.5),
-    key: new DirectionalLight(0xffffff, keyBrightness),
-    fill: new DirectionalLight(0xffffff, fillBrightness),
-    back: new DirectionalLight(0xffffff, 0.3)
-  };
+  addMeshes = [
+    meshes.vfx2
+  ];
 
   translate(lights.key, pos(-200, 200, 600));
   translate(lights.fill, pos(200, 100, 500));
@@ -319,9 +359,9 @@ export function initObjects(state) {
   translate(meshes.chan, pos(-80, 50, 200));
 
   translate(meshes.vfx, pos(0, -50, 200));
+  translate(meshes.vfx2, pos(0, 0, 300));
 
-
-
+  rotate(meshes.vfx2, vec3(degToRad(80), 0, 0));
   rotate(meshes.wings, vec3(0, degToRad(-30), 0));
 
   const update = () => {
@@ -344,16 +384,26 @@ export function initObjects(state) {
 
     wingOffset.x -= 0.01;
 
+    // state.textures.circular.repeat.x =
+    // state.textures.circular.repeat.y =
+    //   Math.sin(state.time * 0.5) * 8.0;
+
+    // state.textures.noise_perlin.repeat.x =
+    // state.textures.noise_perlin.repeat.y =
+    //   Math.sin(state.time) * 8.0;
+
     // state.textures.noise.offset.x += 0.01;
-    state.textures.noise_smoke.offset.y -= 0.01;
-    state.textures.noise_fire.offset.y -= 0.01;
+    // state.textures.noise_smoke.offset.y -= 0.01;
+    // state.textures.noise_fire.offset.y -= 0.01;
     state.textures.noise_flame.offset.y -= 0.01;
+    // state.textures.noise_perlin.offset.y -= 0.001;
     // state.textures.noise_voronoi.offset.x += 0.01;
     // vfxOffset.y += 0.08;
 
-
     // vfxOffset.x = Math.sin(state.time) * 20;
     // vfxOffset.y = Math.sin(state.time * 2) * 2;
+
+    meshes.vfx2.rotation.x += degToRad(1);
 
     updateWing();
     updateChan();
@@ -361,8 +411,12 @@ export function initObjects(state) {
   };
 
 
+  state.textures.checkers.repeat.x =
+  state.textures.checkers.repeat.y = 8;
+
   state.textures.noise_smoke.repeat.x =
   state.textures.noise_smoke.repeat.y = 0.5;
+
   const updateVfx = () => {
     const texture = mats.vfxShader.uniforms.map.value,
           aTexture = mats.vfxShader.uniforms.amap.value,
@@ -375,6 +429,12 @@ export function initObjects(state) {
     updateTextureUniforms(texture, uvT);
     updateTextureUniforms(aTexture, auvT);
     updateTextureUniforms(dTexture, duvT);
+
+    updateTextureUniforms(mats.vfxShader2.uniforms.map.value,
+                          mats.vfxShader2.uniforms.uvTransform);
+
+    updateTextureUniforms(mats.vfxShader2.uniforms.dmap.value,
+                          mats.vfxShader2.uniforms.duvTransform);
   };
 
   const wingMatrix = new Matrix3(),
@@ -426,6 +486,7 @@ export function initObjects(state) {
 
   return {
     meshes,
+    addMeshes,
     lights,
     update
   };

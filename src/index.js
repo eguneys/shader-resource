@@ -49,19 +49,16 @@ function renderWrap(objects) {
   scene.add(objects.lights.fill);
   scene.add(objects.lights.back);
 
-  // scene.add(objects.meshes.plane);
-  // scene.add(objects.meshes.plane2);
-  // scene.add(objects.meshes.plane3);
-  // scene.add(objects.meshes.plane4);
-  // scene.add(objects.meshes.plane5);
-  scene.add(objects.meshes.planeDark);
-  scene.add(objects.meshes.box1);
-  scene.add(objects.meshes.boxgroup);
-  scene.add(objects.meshes.mixgroup);
-  scene.add(objects.meshes.wings);
-  scene.add(objects.meshes.smoke);
-  scene.add(objects.meshes.chan);
-  scene.add(objects.meshes.vfx);
+  objects.addMeshes.forEach(_ => scene.add(_));
+
+  // scene.add(objects.meshes.planeDark);
+  // scene.add(objects.meshes.box1);
+  // scene.add(objects.meshes.boxgroup);
+  // scene.add(objects.meshes.mixgroup);
+  // scene.add(objects.meshes.wings);
+  // scene.add(objects.meshes.smoke);
+  // scene.add(objects.meshes.chan);
+  // scene.add(objects.meshes.vfx);
 
   return scene;
 }

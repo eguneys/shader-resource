@@ -11,6 +11,15 @@
 
 ## Research
 
+### Recent Visit
+
+* [oldschool](http://lodev.org/cgtutor/)
+* [ue cel shade game](https://www.playwoodbound.com/single-post/2017/04/21/Visual-refactoring)
+
+### Rough Idea
+
+* Vector fields gpu particle for tornado
+
 * organize code
   - shader code
   - scene setup transition frame seek
@@ -37,6 +46,8 @@
   - seek frames
 
 ### Threejs
+
+* vertex displacement by noise (eg. waterfall splash)
 
 * textures [constants](https://threejs.org/docs/#api/constants/Textures)
 
@@ -93,10 +104,13 @@
   - saturation is amount of color, shades from white to full color, 
 
 
+## Graphics Shading Pipeline
+* [human 80.lv](https://80.lv/articles/secrets-of-human-shaders-in-ue4/)
+
 ## Shader
 
-
-* Custom VFX Shader
+* [shader.xyz](http://www.shaders.xyz/)
+* [pixar graphics](http://graphics.pixar.com/library/WaveletNoise/)
 
 * node based shaders
   - [ ]
@@ -130,6 +144,7 @@
 * dFdX [shader derivative functions](http://www.aclockworkberry.com/shader-derivative-functions/)
 * clamp(x, min, max)
 * step(edge, x)
+* smoothstep(edge0, edge1, x)
 * mix(x, y, a)
 
 ## HTML5 API
@@ -175,7 +190,10 @@
   - create dynamic alpha shapes
   - texture multiply (25:00) (tex1 * tex2 * 2)
   - multiple texture uv move, particles random rotate
-      
+
+* [no man's sky: building worlds with noise generation 2k17](https://www.youtube.com/watch?v=SePDzis8HqY)
+* [inside: lights, shadows, noise, banding 2k16](https://www.youtube.com/watch?v=RdN06E6Xn9E)
+  - fire gradient applied to alpha
 
 ## Gamedev
 
@@ -201,8 +219,30 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
   - [proun articles](http://joostdevblog.blogspot.com.tr/search?q=proun)
 * [wind maker](http://polycount.com/discussion/104415/zelda-wind-waker-tech-and-texture-analysis-picture-heavy)
 
-## Tutorials
+## People
+* [markmark](http://www.markmark.net/)
+* [pixel maven](http://www.pixelmaven.com/jason/)
+
+## Slides
+* [color banding / dithering](http://loopit.dk/banding_in_games.pdf)
+  
+## Papers
 * [perlin page](http://mrl.nyu.edu/~perlin/)
+* [noise usecase](http://graphicon.ru/html/2008/proceedings/English/S8/Paper_3.pdf)
+  - adding detail to geometry
+  - dynamic volumetric effects
+  - 
+
+## Lectures
+* [rpi courses](https://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S17/calendar.php)
+* [mit courses](http://stellar.mit.edu/S/course/6/fa08/6.837/materials.html)
+* [princeton graphics]
+  * [npr](http://www.cs.princeton.edu/courses/archive/spring15/cos426/lectures/18-npr.pdf)
+  * [game design](http://www.cs.princeton.edu/courses/archive/spring15/cos426/lectures/23-games-nealen.pdf)
+
+## Tutorials
+
+* [oldschool graphics raycasting etc](http://lodev.org/cgtutor/)
 * [nehe tuts in three3j](http://www.johannes-raida.de/tutorials/three.js/tutorial08/tutorial08.htm)
 
 * [2017 links](http://kesen.realtimerendering.com/)
@@ -256,6 +296,8 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
 ### VFX
 
 * [uef 80lvl link](https://80.lv/articles/vfx-for-games-in-ue4/)
+* [unity stylized fx](http://www.jeanmoreno.com/unity/cartoonfx/)
+* [tharle fx](http://www.tharlevfx.com/)
 
 ### Demoscene VFX
 
@@ -266,6 +308,9 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
 
 ### Misc gamedev
 
+* [lots of free png](https://pngtree.com/)
+* [xnormal map baking](http://xnormal3.blogspot.com.tr/)
+* [hexels grid based painting tool](https://www.marmoset.co/hexels/)
 * [shader editor](http://shdr.bkcore.com/)
 * [paste image host](https://pasteboard.co/)
 * [image editor](https://viliusle.github.io/miniPaint/)
@@ -276,6 +321,7 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
 * [all cs academic](http://matt.might.net/articles/)
 
 ### Game Studio
+* [loopit publications, inside](http://loopit.dk/publications/)
 * [engine software, monopoly proun](http://engine-software.com/?page_id=7)
 
 ### Health
