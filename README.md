@@ -11,7 +11,23 @@
 
 ## Research
 
+* [demoscene code setup] (https://github.com/fernandojsg/thisway.js)
+* [sampling theory, convolution, fourier transforms]()
+
 ### Recent Visit
+
+* [pailhead examples (eg. pbr)](http://dusanbosnjak.com/test/webGL/new/StojadinCeo/scripts/)
+* [glsl lighting tutorial](https://github.com/stackgl/glsl-lighting-walkthrough)
+* [perlin noise blog read](http://flafla2.github.io/2014/08/09/perlinnoise.html)
+* [try threejs.editor with scripting](three.js/editor)
+* [try threejs sandbox found by pbr example](https://github.com/wlalele/turbo-robot)
+* [unity books](file:///C:/Users/eg/Downloads/Unity%20Shaders%20and%20Effects%20Cookbook.pdf)
+  - [book 2](http://pdf.th7.cn/down/files/1312/Unity%20Shaders%20and%20Effects%20Cookbook.pdf)
+* [forier transform](http://lodev.org/cgtutor/fourier.html)
+* [gdc 1999 keynote](https://www.youtube.com/watch?v=LC2Pf5F2acI)
+* [making noise ken perlin gdc 1999](http://lousodrome.net/blog/light/)
+* [some light blog](http://lousodrome.net/blog/light/)
+* [render stats](http://spite.github.io/rstats/)
 
 * [oldschool](http://lodev.org/cgtutor/)
 * [ue cel shade game](https://www.playwoodbound.com/single-post/2017/04/21/Visual-refactoring)
@@ -19,7 +35,7 @@
 ### Rough Idea
 
 * Vector fields gpu particle for tornado
-
+  - go realtimevfx.com for effect breakdown
 * organize code
   - shader code
   - scene setup transition frame seek
@@ -31,6 +47,7 @@
 
 ### Game tricks
 
+* alpha erosion
 * uv distortion
 
 * decals
@@ -44,6 +61,16 @@
 * node based vis editor like [nin simplified](https://github.com/ninjadev/nin/tree/master/nin).
   - [example](https://github.com/ninjadev/re/blob/master/src/jules.js)
   - seek frames
+
+### glstack
+
+* [webglstudio](webglstudio.org)
+* [litescene.js guides](https://github.com/jagenjo/litescene.js/tree/master/guides)
+
+
+### Webgl
+
+* [learnwebgl.net](http://learnwebgl.brown37.net)
 
 ### Threejs
 
@@ -86,6 +113,8 @@
 
 * How to set object pivot for rotation
 * Move texture along a plane `texture.offset.x += 0.01;`
+* [cube slam camera movements example](https://github.com/vladikoff/cubeslam-mirror/blob/master/lib/renderer-3d/camera-controller.js)
+* [render stats](http://spite.github.io/rstats/)
 * [custom shader tutorial](http://blog.cjgammon.com/threejs-custom-shader-material)
 * [aviator modify geo](https://tympanus.net/codrops/2016/04/26/the-aviator-animating-basic-3d-scene-threejs/)
 * [Matrix Tutorial](http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/)
@@ -94,8 +123,11 @@
 * [RoundedBoxGeometry](https://github.com/pailhead/three-rounded-box/blob/master/index.js
 * [deprecated api](https://threejs.org/docs/#api/deprecated/DeprecatedList)
 
+* [picogl minimalist webgl api](https://github.com/tsherif/picogl.js)
 
 ## Art
+
+* [art tutorial](http://androidarts.com/art_tut.htm)
 
 * [Principles](http://learn.leighcotnoir.com/artspeak/principles/)
 
@@ -109,23 +141,31 @@
 
 ## Shader
 
+* [all-in-one raymarching tutorial](http://blog.ruofeidu.com/tutorial-of-ray-casting-ray-tracing-and-ray-marching/)
+* [procedural generation](https://medium.com/@nicoptere/generating-things-with-code-ddbca45ceddc)
+* [lightning](http://wiki.polycount.com/wiki/Lighting)
 * [shader.xyz](http://www.shaders.xyz/)
 * [pixar graphics](http://graphics.pixar.com/library/WaveletNoise/)
 
 * node based shaders
-  - [ ]
-  - [live node based shader gen tool in nodejs](https://github.com/ninjadev/nin)
-  - [threejs discussion](https://github.com/mrdoob/three.js/issues/7522)
-  - [shader graph](https://github.com/unconed/shadergraph)
-  - [shader frog](https://shaderfrog.com/app/editor)
-  - [shader frog] (http://acegikmo.com/shaderforge/tutorials/)
+- [ ]
+- [node based shading](https://github.com/zz85/crayon.js)
+- [live node based shader gen tool in nodejs](https://github.com/ninjadev/nin)
+- [threejs discussion](https://github.com/mrdoob/three.js/issues/7522)
+- [shader graph](https://github.com/unconed/shadergraph)
+- [shader frog](https://shaderfrog.com/app/editor)
+- [shader frog] (http://acegikmo.com/shaderforge/tutorials/)
 
-* Audio vis demos
+* Audio vis demoscene
+- [amiga scene remakes](www.wab.com)  
 - [pouet platform](http://www.pouet.net/)
 - [train ascii 8bit source](https://github.com/sigvef/skog/)
 - [what are you syncing about (by nin)](https://stianj.com/what-are-you-syncing-about/)
 - [splice songs] https://splice.com/henryfong/henry-fong-j-trick-scream-original-mix
 - [base](https://www.airtightinteractive.com/work/)
+- [stravaganza js remake](https://github.com/fernandojsg/thisway.js)
+- [codegolf demoscene quake 1k](http://www.p01.org/)
+- [140bytes 1k techniques](https://github.com/jed/140bytes/wiki/Byte-saving-techniques)
 
 ## Three.js API
 
@@ -136,11 +176,28 @@
   `.render(scene, camera)`
 * Scene()
 * ShaderMaterial()
+
+
+* geometry.applyMatrix(transformationMatrix)
+* ArrowHelper(Ray.direction, Ray.origin, length, color);
+
+* [raycasting returns uv coordinates](https://github.com/mrdoob/three.js/pull/7023)
+
 * matrix.setUvTransform(offset.x, offset.y, repeat.x, repeat.y, rotation, center.x, center.y);
+* matrix4.makeRotationX(x), matrix4.makeTranslation(x, y, z)
+
+
+
 
 
 ## GLSL API
 
+* [webgl cheatsheet](https://www.khronos.org/files/webgl/webgl-reference-card-1_0.pdf)
+* [webgl spec](https://www.khronos.org/registry/webgl/specs/latest/1.0)
+* [spec 4.40](https://www.khronos.org/registry/OpenGL/specs/gl/GLSLangSpec.4.40.pdf)
+
+* fwidth [return the sum of absolute value of derivatiesin x and y](http://blog.ruofeidu.com/simplest-fatest-glsl-edge-detection-using-fwidth/)
+  - how it works [https://computergraphics.stackexchange.com/questions/61/what-is-fwidth-and-how-does-it-work]
 * dFdX [shader derivative functions](http://www.aclockworkberry.com/shader-derivative-functions/)
 * clamp(x, min, max)
 * step(edge, x)
@@ -181,11 +238,15 @@
 
 * spread syntax {...state, props } [redux example](http://redux.js.org/docs/recipes/UsingObjectSpreadOperator.html)
 
+## Git
+
+* [quick clone]`git clone --depth 1 <repo>`
+
 # Resources
 
 ## Conf talks GDC
 
-* [diablo vfx](https://archive.org/details/GDC2013Love)
+* [diablo vfx 2k13](https://archive.org/details/GDC2013Love)
   - blendadd shading (22:07)
   - create dynamic alpha shapes
   - texture multiply (25:00) (tex1 * tex2 * 2)
@@ -203,6 +264,7 @@
 * [flip code gamedev](http://www.flipcode.com/archives/)
 
 ## game tech
+* [perlin noise blog read](http://flafla2.github.io/2014/08/09/perlinnoise.html)
 * [perlin noise paper](http://webstaff.itn.liu.se/~stegu/jgt2012/article.pdf)
 * [soft shadows](http://codeflow.org/entries/2013/feb/15/soft-shadow-mapping/)
 p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
@@ -220,6 +282,7 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
 * [wind maker](http://polycount.com/discussion/104415/zelda-wind-waker-tech-and-texture-analysis-picture-heavy)
 
 ## People
+* [evan wallace shader tricks](http://madebyevan.com/)
 * [markmark](http://www.markmark.net/)
 * [pixel maven](http://www.pixelmaven.com/jason/)
 
@@ -228,7 +291,7 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
   
 ## Papers
 * [perlin page](http://mrl.nyu.edu/~perlin/)
-* [noise usecase](http://graphicon.ru/html/2008/proceedings/English/S8/Paper_3.pdf)
+* [noise usecases](http://graphicon.ru/html/2008/proceedings/English/S8/Paper_3.pdf)
   - adding detail to geometry
   - dynamic volumetric effects
   - 
@@ -239,11 +302,12 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
 * [princeton graphics]
   * [npr](http://www.cs.princeton.edu/courses/archive/spring15/cos426/lectures/18-npr.pdf)
   * [game design](http://www.cs.princeton.edu/courses/archive/spring15/cos426/lectures/23-games-nealen.pdf)
+* [linear algebra & math course](https://mathcs.clarku.edu/~djoyce/ma130/)
 
 ## Tutorials
 
 * [oldschool graphics raycasting etc](http://lodev.org/cgtutor/)
-* [nehe tuts in three3j](http://www.johannes-raida.de/tutorials/three.js/tutorial08/tutorial08.htm)
+
 
 * [2017 links](http://kesen.realtimerendering.com/)
 
@@ -255,7 +319,6 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
 * [various links @ realtimerendering.com](realtimerendering.com)
 * [npr siggraph](http://stylized.realtimerendering.com/#materials)
 * [opengl techniques] (http://www.opengl-tutorial.org/)
-* [node based shading](https://github.com/zz85/crayon.js)
 * [tornado](http://www.inear.se/2011/09/set-a-sphere-on-fire-with-three-js/)
 * [cube slam 9 slice](http://www.inear.se/2013/07/cube-slam-behind-the-three-scene/)
 
@@ -265,7 +328,7 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
   - [thick lines for cell shading](http://www.chrisevans3d.com/tutorials/cel_lines/)
 
 * [game art tricks](https://simonschreibt.de/gat/cell-shading/)
-*[](http://sunandblackcat.com/tipFullView.php?l=eng&topicid=15)
+* [](http://sunandblackcat.com/tipFullView.php?l=eng&topicid=15)
 * [gamedev](https://www.gamedev.net/articles/programming/graphics/cel-shading-r1438/)
 * [npr quake](http://research.cs.wisc.edu/graphics/Gallery/NPRQuake/whatIsIt.html)
 * cell shaded games
@@ -277,6 +340,8 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
   - [marvel vs capcom]()
   - [bastion]()
 
+### PBR Shading
+* [three.js repo with research links](https://github.com/tiansijie/WebGLpbr)
 
 ### Particles
 
@@ -308,6 +373,10 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
 
 ### Misc gamedev
 
+* [fun coop game rapt](http://raptjs.com/)
+
+* [webglstudio ](webglstudio.org)
+* [texgen texture generator](http://fernandojsg.com/project/ktexgen/)
 * [lots of free png](https://pngtree.com/)
 * [xnormal map baking](http://xnormal3.blogspot.com.tr/)
 * [hexels grid based painting tool](https://www.marmoset.co/hexels/)
@@ -319,11 +388,33 @@ p* [decals](http://blog.wolfire.com/2009/06/how-to-project-decals/)
 * [game art tricks](https://simonschreibt.de/gat/cell-shading/)
 * [game of odds](https://www.prudential.com/cdn/tools/game-of-odds/)
 * [all cs academic](http://matt.might.net/articles/)
+* [generate music javascript](http://scribbletune.com/)
 
 ### Game Studio
+* [dota 2 workshop](https://support.steampowered.com/kb/9334-YDXV-8590/dota-2-workshop-character-art-guide)
 * [loopit publications, inside](http://loopit.dk/publications/)
 * [engine software, monopoly proun](http://engine-software.com/?page_id=7)
+
+### Rendering Techniques
+
+* [volumetric lines](http://developer.download.nvidia.com/SDK/9.5/Samples/DEMOS/OpenGL/src/cg_VolumeLine/docs/VolumeLine.pdf)
+
+### Games & Inspiration
+
+* [pew pew](http://www.jfgeyelin.com/)
+* [color spaces reddit](https://www.reddit.com/r/ImaginaryColorscapes/)
+* [js1k resources](http://js13kgames.github.io/resources/)
+* [glitchbusters](http://store.steampowered.com/app/661360/Glitchbuster/)
+
+### Startup
+
+* [yc advice](https://blog.ycombinator.com/ycs-essential-startup-advice/)
 
 ### Health
 
 * [fitness](http://matt.might.net/articles/hacking-strength/)
+
+### Buy Notebook
+
+* [tips](http://alteredqualia.com/texts/notebooks/)
+
